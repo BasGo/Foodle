@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Foodle.Service.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:62469/FoodleService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
-  <xs:complexType name="VoteOptions">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Foodle.Service.Contracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Contracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:62469/FoodleService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Options">
     <xs:sequence>
       <xs:element minOccurs="0" name="Deadline" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Restaurants" nillable="true" type="tns:ArrayOfRestaurant" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="VoteOptions" nillable="true" type="tns:VoteOptions" />
+  <xs:element name="Options" nillable="true" type="tns:Options" />
   <xs:complexType name="ArrayOfRestaurant">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Restaurant" nillable="true" type="tns:Restaurant" />
@@ -17,12 +17,18 @@
   <xs:complexType name="Restaurant">
     <xs:sequence>
       <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="Days" type="q1:DayOfWeek" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VotePoints" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Restaurant" nillable="true" type="tns:Restaurant" />
+  <xs:complexType name="SaveVoteRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Vote" nillable="true" type="tns:Vote" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SaveVoteRequest" nillable="true" type="tns:SaveVoteRequest" />
   <xs:complexType name="Vote">
     <xs:sequence>
       <xs:element minOccurs="0" name="Prio1" nillable="true" type="tns:Restaurant" />
@@ -31,4 +37,36 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Vote" nillable="true" type="tns:Vote" />
+  <xs:complexType name="SaveVoteResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Status" type="tns:ResponseStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SaveVoteResponse" nillable="true" type="tns:SaveVoteResponse" />
+  <xs:simpleType name="ResponseStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Update">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Inserted">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ResponseStatus" nillable="true" type="tns:ResponseStatus" />
 </xs:schema>

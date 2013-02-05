@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
-using System.Linq;
-using System.Web;
 using Foodle.Service.Configuration;
-using Foodle.Service.Model;
+using Foodle.Service.Contracts;
 
 namespace Foodle.Service.Factories
 {
     public class VoteOptionFactory
     {
-        public static VoteOptions CreateVoteOptions()
+        public static Options CreateVoteOptions()
         {
             var tmp = (RestaurantConfiguration)ConfigurationManager.GetSection("RestaurantConfiguration");
             var deadline = Helper.GetDeadline(tmp.Deadline);
             Debug.WriteLine("Issued {0} to be the next deadline", deadline);
 
-            var result = new VoteOptions { 
+            var result = new Options { 
                 Deadline = deadline, 
                 Restaurants = new List<Restaurant>()
             };

@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
-namespace Foodle.Service.Model
+namespace Foodle.Service.Contracts
 {
     [DataContract]
     public class Restaurant
@@ -20,5 +20,8 @@ namespace Foodle.Service.Model
 
         [XmlIgnore]
         public DayOfWeek Days { get; set; }
+
+        [DataMember]
+        public int VotePoints { get; set; }
     }
 }

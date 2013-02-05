@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Foodle.Service.Model
+namespace Foodle.Service.Contracts
 {
     [DataContract]
     public class Vote

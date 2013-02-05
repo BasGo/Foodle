@@ -15,9 +15,9 @@ namespace Foodle.Client.Windows.FoodleServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="VoteOptions", Namespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Options", Namespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Contracts")]
     [System.SerializableAttribute()]
-    public partial class VoteOptions : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Options : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -76,7 +76,7 @@ namespace Foodle.Client.Windows.FoodleServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Restaurant", Namespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Restaurant", Namespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Contracts")]
     [System.SerializableAttribute()]
     public partial class Restaurant : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -87,13 +87,13 @@ namespace Foodle.Client.Windows.FoodleServiceReference {
         private string CommentField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DayOfWeek DaysField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UrlField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int VotePointsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -114,19 +114,6 @@ namespace Foodle.Client.Windows.FoodleServiceReference {
                 if ((object.ReferenceEquals(this.CommentField, value) != true)) {
                     this.CommentField = value;
                     this.RaisePropertyChanged("Comment");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DayOfWeek Days {
-            get {
-                return this.DaysField;
-            }
-            set {
-                if ((this.DaysField.Equals(value) != true)) {
-                    this.DaysField = value;
-                    this.RaisePropertyChanged("Days");
                 }
             }
         }
@@ -157,6 +144,19 @@ namespace Foodle.Client.Windows.FoodleServiceReference {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int VotePoints {
+            get {
+                return this.VotePointsField;
+            }
+            set {
+                if ((this.VotePointsField.Equals(value) != true)) {
+                    this.VotePointsField = value;
+                    this.RaisePropertyChanged("VotePoints");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -169,7 +169,52 @@ namespace Foodle.Client.Windows.FoodleServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Vote", Namespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SaveVoteRequest", Namespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Contracts")]
+    [System.SerializableAttribute()]
+    public partial class SaveVoteRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Foodle.Client.Windows.FoodleServiceReference.Vote VoteField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Foodle.Client.Windows.FoodleServiceReference.Vote Vote {
+            get {
+                return this.VoteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VoteField, value) != true)) {
+                    this.VoteField = value;
+                    this.RaisePropertyChanged("Vote");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Vote", Namespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Contracts")]
     [System.SerializableAttribute()]
     public partial class Vote : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -244,18 +289,292 @@ namespace Foodle.Client.Windows.FoodleServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SaveVoteResponse", Namespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Contracts")]
+    [System.SerializableAttribute()]
+    public partial class SaveVoteResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Foodle.Client.Windows.FoodleServiceReference.ResponseStatus StatusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Foodle.Client.Windows.FoodleServiceReference.ResponseStatus Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((this.StatusField.Equals(value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ResponseStatus", Namespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Contracts")]
+    public enum ResponseStatus : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Unknown = -1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Update = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Inserted = 1,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Results", Namespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Model")]
+    [System.SerializableAttribute()]
+    public partial class Results : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Foodle.Client.Windows.FoodleServiceReference.Result[] ItemsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Foodle.Client.Windows.FoodleServiceReference.Result[] Items {
+            get {
+                return this.ItemsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ItemsField, value) != true)) {
+                    this.ItemsField = value;
+                    this.RaisePropertyChanged("Items");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Result", Namespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Model")]
+    [System.SerializableAttribute()]
+    public partial class Result : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Foodle.Client.Windows.FoodleServiceReference.ResultItem Prio1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Foodle.Client.Windows.FoodleServiceReference.ResultItem Prio2Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Foodle.Client.Windows.FoodleServiceReference.ResultItem Prio3Field;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Date {
+            get {
+                return this.DateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DateField, value) != true)) {
+                    this.DateField = value;
+                    this.RaisePropertyChanged("Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Foodle.Client.Windows.FoodleServiceReference.ResultItem Prio1 {
+            get {
+                return this.Prio1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Prio1Field, value) != true)) {
+                    this.Prio1Field = value;
+                    this.RaisePropertyChanged("Prio1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Foodle.Client.Windows.FoodleServiceReference.ResultItem Prio2 {
+            get {
+                return this.Prio2Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Prio2Field, value) != true)) {
+                    this.Prio2Field = value;
+                    this.RaisePropertyChanged("Prio2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Foodle.Client.Windows.FoodleServiceReference.ResultItem Prio3 {
+            get {
+                return this.Prio3Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Prio3Field, value) != true)) {
+                    this.Prio3Field = value;
+                    this.RaisePropertyChanged("Prio3");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ResultItem", Namespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Model")]
+    [System.SerializableAttribute()]
+    public partial class ResultItem : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PointsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] UsersField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Points {
+            get {
+                return this.PointsField;
+            }
+            set {
+                if ((this.PointsField.Equals(value) != true)) {
+                    this.PointsField = value;
+                    this.RaisePropertyChanged("Points");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Users {
+            get {
+                return this.UsersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsersField, value) != true)) {
+                    this.UsersField = value;
+                    this.RaisePropertyChanged("Users");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="FoodleServiceReference.IFoodleService")]
     public interface IFoodleService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoodleService/GetVoteOptions", ReplyAction="http://tempuri.org/IFoodleService/GetVoteOptionsResponse")]
-        Foodle.Client.Windows.FoodleServiceReference.VoteOptions GetVoteOptions();
+        Foodle.Client.Windows.FoodleServiceReference.Options GetVoteOptions();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoodleService/SubmitVote", ReplyAction="http://tempuri.org/IFoodleService/SubmitVoteResponse")]
-        bool SubmitVote(Foodle.Client.Windows.FoodleServiceReference.Vote vote);
+        Foodle.Client.Windows.FoodleServiceReference.SaveVoteResponse SubmitVote(Foodle.Client.Windows.FoodleServiceReference.SaveVoteRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoodleService/GetResults", ReplyAction="http://tempuri.org/IFoodleService/GetResultsResponse")]
-        bool GetResults();
+        Foodle.Client.Windows.FoodleServiceReference.Results GetResults();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -285,15 +604,15 @@ namespace Foodle.Client.Windows.FoodleServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public Foodle.Client.Windows.FoodleServiceReference.VoteOptions GetVoteOptions() {
+        public Foodle.Client.Windows.FoodleServiceReference.Options GetVoteOptions() {
             return base.Channel.GetVoteOptions();
         }
         
-        public bool SubmitVote(Foodle.Client.Windows.FoodleServiceReference.Vote vote) {
-            return base.Channel.SubmitVote(vote);
+        public Foodle.Client.Windows.FoodleServiceReference.SaveVoteResponse SubmitVote(Foodle.Client.Windows.FoodleServiceReference.SaveVoteRequest request) {
+            return base.Channel.SubmitVote(request);
         }
         
-        public bool GetResults() {
+        public Foodle.Client.Windows.FoodleServiceReference.Results GetResults() {
             return base.Channel.GetResults();
         }
     }

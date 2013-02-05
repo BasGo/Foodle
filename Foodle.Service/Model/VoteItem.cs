@@ -1,7 +1,8 @@
-﻿
+﻿using Foodle.Service.Contracts;
+
 namespace Foodle.Service.Model
 {
-    public class VoteResult
+    public class VoteItem
     {
         public string Date { get; set; }
         public string User { get; set; }

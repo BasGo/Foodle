@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using Foodle.Service.Configuration;
+using Foodle.Service.Contracts;
 using Foodle.Service.Model;
 
 namespace Foodle.Service
@@ -13,6 +14,19 @@ namespace Foodle.Service
                 {
                     Name = restaurant.Name,
                     Days = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), GetWeekdayEnum(restaurant.Days))
+                };
+            return result;
+        }
+
+        public static VoteItem Map(Vote vote, string userName)
+        {
+            var result = new VoteItem
+                {
+                    Date = DateTime.Now.ToString("yyyy-MM-dd"),
+                    User = userName,
+                    Prio1 = vote.Prio1,
+                    Prio2 = vote.Prio2,
+                    Prio3 = vote.Prio3
                 };
             return result;
         }

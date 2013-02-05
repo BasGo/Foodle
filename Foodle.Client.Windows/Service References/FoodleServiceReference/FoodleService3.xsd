@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/System" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:simpleType name="DayOfWeek">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Sunday" />
-      <xs:enumeration value="Monday" />
-      <xs:enumeration value="Tuesday" />
-      <xs:enumeration value="Wednesday" />
-      <xs:enumeration value="Thursday" />
-      <xs:enumeration value="Friday" />
-      <xs:enumeration value="Saturday" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="DayOfWeek" nillable="true" type="tns:DayOfWeek" />
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Foodle.Service.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:62469/FoodleService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="Results">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Results" nillable="true" type="tns:Results" />
+  <xs:complexType name="ArrayOfResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Result" nillable="true" type="tns:Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfResult" nillable="true" type="tns:ArrayOfResult" />
+  <xs:complexType name="Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Prio1" nillable="true" type="tns:ResultItem" />
+      <xs:element minOccurs="0" name="Prio2" nillable="true" type="tns:ResultItem" />
+      <xs:element minOccurs="0" name="Prio3" nillable="true" type="tns:ResultItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Result" nillable="true" type="tns:Result" />
+  <xs:complexType name="ResultItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Points" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Users" nillable="true" type="q1:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultItem" nillable="true" type="tns:ResultItem" />
 </xs:schema>

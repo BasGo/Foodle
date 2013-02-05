@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using Foodle.Service.Model;
 
 namespace Foodle.Service
 {

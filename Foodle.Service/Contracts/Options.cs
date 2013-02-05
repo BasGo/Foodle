@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace Foodle.Service.Model
+namespace Foodle.Service.Contracts
 {
     [DataContract]
-    public class VoteOptions
+    public class Options
     {
         [DataMember]
         public DateTime Deadline { get; set; }

@@ -25,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -99,7 +100,13 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\FoodleServiceReference\Foodle.Client.Windows.FoodleServiceReference.VoteOptions.datasource">
+    <None Include="Service References\FoodleServiceReference\Foodle.Client.Windows.FoodleServiceReference.Options.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FoodleServiceReference\Foodle.Client.Windows.FoodleServiceReference.Results.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FoodleServiceReference\Foodle.Client.Windows.FoodleServiceReference.SaveVoteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\FoodleServiceReference\FoodleService.wsdl" />
@@ -113,6 +120,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\FoodleServiceReference\FoodleService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FoodleServiceReference\FoodleService4.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

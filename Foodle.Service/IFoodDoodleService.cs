@@ -1,4 +1,5 @@
 ﻿using System.ServiceModel;
+using Foodle.Service.Contracts;
 using Foodle.Service.Model;
 
 namespace Foodle.Service
@@ -7,12 +8,12 @@ namespace Foodle.Service
     public interface IFoodleService
     {
         [OperationContract]
-        VoteOptions GetVoteOptions();
+        Options GetVoteOptions();
 
         [OperationContract]
-        bool SubmitVote(Vote vote);
+        SaveVoteResponse SubmitVote(SaveVoteRequest request);
 
         [OperationContract]
-        bool GetResults();
+        Results GetResults();
     }
 }
