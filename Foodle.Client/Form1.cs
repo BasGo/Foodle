@@ -34,7 +34,7 @@ namespace Foodle.Client
 
             var res = client.GetResults();
 
-            Console.WriteLine("JO");
+            Console.WriteLine();
         }
     }
 }
