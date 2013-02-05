@@ -42,7 +42,7 @@ namespace Foodle.Service
                         result += 16;
                         break;
                 }
-            }
+            } 
             return result.ToString(CultureInfo.InvariantCulture);
         }
     }
