@@ -8,6 +8,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foodle.Client", "Foodle.Cli
 		{CF77C268-4B10-48AB-A113-D4AE58BD651E} = {CF77C268-4B10-48AB-A113-D4AE58BD651E}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foodle.Client.Windows", "Foodle.Client.Windows\Foodle.Client.Windows.csproj", "{B46E99A6-EE03-4D3F-A04E-0D41B72DE40D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CF77C268-4B10-48AB-A113-D4AE58BD651E} = {CF77C268-4B10-48AB-A113-D4AE58BD651E}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +43,16 @@ Global
 		{99585A4E-395C-492F-85B7-A0F00E29731B}.Release|Mixed Platforms.Build.0 = Release|x86
 		{99585A4E-395C-492F-85B7-A0F00E29731B}.Release|x86.ActiveCfg = Release|x86
 		{99585A4E-395C-492F-85B7-A0F00E29731B}.Release|x86.Build.0 = Release|x86
+		{B46E99A6-EE03-4D3F-A04E-0D41B72DE40D}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B46E99A6-EE03-4D3F-A04E-0D41B72DE40D}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{B46E99A6-EE03-4D3F-A04E-0D41B72DE40D}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{B46E99A6-EE03-4D3F-A04E-0D41B72DE40D}.Debug|x86.ActiveCfg = Debug|x86
+		{B46E99A6-EE03-4D3F-A04E-0D41B72DE40D}.Debug|x86.Build.0 = Debug|x86
+		{B46E99A6-EE03-4D3F-A04E-0D41B72DE40D}.Release|Any CPU.ActiveCfg = Release|x86
+		{B46E99A6-EE03-4D3F-A04E-0D41B72DE40D}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{B46E99A6-EE03-4D3F-A04E-0D41B72DE40D}.Release|Mixed Platforms.Build.0 = Release|x86
+		{B46E99A6-EE03-4D3F-A04E-0D41B72DE40D}.Release|x86.ActiveCfg = Release|x86
+		{B46E99A6-EE03-4D3F-A04E-0D41B72DE40D}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

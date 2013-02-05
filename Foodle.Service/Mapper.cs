@@ -12,7 +12,7 @@ namespace Foodle.Service
             var result = new Restaurant
                 {
                     Name = restaurant.Name,
-                    Days = (Restaurant.Weekdays) Enum.Parse(typeof (Restaurant.Weekdays), GetWeekdayEnum(restaurant.Days))
+                    Days = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), GetWeekdayEnum(restaurant.Days))
                 };
             return result;
         }

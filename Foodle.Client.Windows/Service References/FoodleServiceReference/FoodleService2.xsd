@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Foodle.Service.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:62469/FoodleService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:complexType name="VoteOptions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Deadline" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Restaurants" nillable="true" type="tns:ArrayOfRestaurant" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VoteOptions" nillable="true" type="tns:VoteOptions" />
+  <xs:complexType name="ArrayOfRestaurant">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Restaurant" nillable="true" type="tns:Restaurant" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRestaurant" nillable="true" type="tns:ArrayOfRestaurant" />
+  <xs:complexType name="Restaurant">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="Days" type="q1:DayOfWeek" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Restaurant" nillable="true" type="tns:Restaurant" />
+  <xs:complexType name="Vote">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Prio1" nillable="true" type="tns:Restaurant" />
+      <xs:element minOccurs="0" name="Prio2" nillable="true" type="tns:Restaurant" />
+      <xs:element minOccurs="0" name="Prio3" nillable="true" type="tns:Restaurant" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Vote" nillable="true" type="tns:Vote" />
+</xs:schema>

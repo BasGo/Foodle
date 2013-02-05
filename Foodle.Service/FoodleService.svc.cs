@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
 using Foodle.Service.BL;
 using Foodle.Service.Configuration;
+using Foodle.Service.Factories;
 using Foodle.Service.Model;
 
 namespace Foodle.Service
@@ -15,17 +17,7 @@ namespace Foodle.Service
         public VoteOptions GetVoteOptions()
         {
 
-            var tmp = (RestaurantConfiguration)ConfigurationManager.GetSection("RestaurantConfiguration");
-            var result = new VoteOptions { 
-                Deadline = Helper.GetDeadline(tmp.Deadline), 
-                Restaurants = new List<Restaurant>()
-            };
-
-            foreach (RestaurantElement re in tmp.Restaurants)
-            {
-                result.Restaurants.Add(Mapper.Map(re));
-                Console.WriteLine("STOP");
-            }
+            var result = VoteOptionFactory.CreateVoteOptions();
 
             return result;
         }

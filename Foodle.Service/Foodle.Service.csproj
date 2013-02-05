@@ -69,6 +69,7 @@
     <Compile Include="Configuration\RestaurantCollection.cs" />
     <Compile Include="Configuration\RestaurantElement.cs" />
     <Compile Include="Configuration\RestaurantConfiguration.cs" />
+    <Compile Include="Factories\VoteOptionFactory.cs" />
     <Compile Include="FoodleService.svc.cs">
       <DependentUpon>FoodleService.svc</DependentUpon>
     </Compile>
