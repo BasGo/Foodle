@@ -158,9 +158,16 @@ namespace Foodle.Client.Windows
             {
                 var response = client.GetResults();
                 var results = response.Results;
-                msgBuilder.AppendLine(string.Format("[1] -> {0} ({1} votes)", results.Items[0].Prio1.Name, results.Items[0].Prio1.Points));
-                msgBuilder.AppendLine(string.Format("[2] -> {0} ({1} votes)", results.Items[0].Prio2.Name, results.Items[0].Prio2.Points));
-                msgBuilder.AppendLine(string.Format("[3] -> {0} ({1} votes)", results.Items[0].Prio3.Name, results.Items[0].Prio3.Points));
+                if (!results.Items.Any())
+                { 
+                    msgBuilder.AppendLine("No votes yet"); 
+                }
+                else
+                {
+                    msgBuilder.AppendLine(string.Format("[1] -> {0} ({1} votes)", results.Items[0].Prio1.Name, results.Items[0].Prio1.Points));
+                    msgBuilder.AppendLine(string.Format("[2] -> {0} ({1} votes)", results.Items[0].Prio2.Name, results.Items[0].Prio2.Points));
+                    msgBuilder.AppendLine(string.Format("[3] -> {0} ({1} votes)", results.Items[0].Prio3.Name, results.Items[0].Prio3.Points));
+                }
             }
 
             if (!string.IsNullOrEmpty(statusInformation))
