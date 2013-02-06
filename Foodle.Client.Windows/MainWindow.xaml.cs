@@ -44,7 +44,8 @@ namespace Foodle.Client.Windows
         {
             using (var client = new FoodleServiceClient())
             {
-                _voteOptions = client.GetVoteOptions();
+                var response = client.GetVoteOptions();
+                _voteOptions = response.Options;
             }           
 
             ShowRestaurants();
@@ -155,10 +156,11 @@ namespace Foodle.Client.Windows
             var msgBuilder = new StringBuilder();
             using (var client = new FoodleServiceClient())
             {
-                var tmp = client.GetResults();
-                msgBuilder.AppendLine(string.Format("[1] -> {0} ({1} votes)", tmp.Items[0].Prio1.Name, tmp.Items[0].Prio1.Points));
-                msgBuilder.AppendLine(string.Format("[2] -> {0} ({1} votes)", tmp.Items[0].Prio2.Name, tmp.Items[0].Prio2.Points));
-                msgBuilder.AppendLine(string.Format("[3] -> {0} ({1} votes)", tmp.Items[0].Prio3.Name, tmp.Items[0].Prio3.Points));
+                var response = client.GetResults();
+                var results = response.Results;
+                msgBuilder.AppendLine(string.Format("[1] -> {0} ({1} votes)", results.Items[0].Prio1.Name, results.Items[0].Prio1.Points));
+                msgBuilder.AppendLine(string.Format("[2] -> {0} ({1} votes)", results.Items[0].Prio2.Name, results.Items[0].Prio2.Points));
+                msgBuilder.AppendLine(string.Format("[3] -> {0} ({1} votes)", results.Items[0].Prio3.Name, results.Items[0].Prio3.Points));
             }
 
             if (!string.IsNullOrEmpty(statusInformation))

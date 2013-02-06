@@ -100,10 +100,10 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\FoodleServiceReference\Foodle.Client.Windows.FoodleServiceReference.Options.datasource">
+    <None Include="Service References\FoodleServiceReference\Foodle.Client.Windows.FoodleServiceReference.GetResultsResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\FoodleServiceReference\Foodle.Client.Windows.FoodleServiceReference.Results.datasource">
+    <None Include="Service References\FoodleServiceReference\Foodle.Client.Windows.FoodleServiceReference.GetVoteOptionsResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\FoodleServiceReference\Foodle.Client.Windows.FoodleServiceReference.SaveVoteResponse.datasource">
