@@ -8,6 +8,7 @@ using Foodle.Service.Model;
 namespace Foodle.Service
 {
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
+    [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
     public class FoodleService : IFoodleService
     {
         public GetVoteOptionsResponse GetVoteOptions()
