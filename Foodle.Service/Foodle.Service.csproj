@@ -69,6 +69,8 @@
     <Compile Include="Configuration\RestaurantCollection.cs" />
     <Compile Include="Configuration\RestaurantElement.cs" />
     <Compile Include="Configuration\RestaurantConfiguration.cs" />
+    <Compile Include="Contracts\GetResultsResponse.cs" />
+    <Compile Include="Contracts\GetVoteOptionsResponse.cs" />
     <Compile Include="Contracts\Options.cs" />
     <Compile Include="Contracts\Restaurant.cs" />
     <Compile Include="Contracts\SaveVoteRequest.cs" />

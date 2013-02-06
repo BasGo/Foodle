@@ -8,12 +8,12 @@ namespace Foodle.Service
     public interface IFoodleService
     {
         [OperationContract]
-        Options GetVoteOptions();
+        GetVoteOptionsResponse GetVoteOptions();
 
         [OperationContract]
         SaveVoteResponse SubmitVote(SaveVoteRequest request);
 
         [OperationContract]
-        Results GetResults();
+        GetResultsResponse GetResults();
     }
 }

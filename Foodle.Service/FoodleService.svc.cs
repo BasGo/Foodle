@@ -10,10 +10,10 @@ namespace Foodle.Service
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class FoodleService : IFoodleService
     {
-        public Options GetVoteOptions()
+        public GetVoteOptionsResponse GetVoteOptions()
         {
-            var result = VoteOptionFactory.CreateVoteOptions();
-            return result;
+            var options = VoteOptionFactory.CreateVoteOptions();
+            return new GetVoteOptionsResponse {Options = options};
         }
 
         public SaveVoteResponse SubmitVote(SaveVoteRequest request)
@@ -23,9 +23,10 @@ namespace Foodle.Service
             return ResultsHandler.SaveVote(mapped);
         }
 
-        public Results GetResults()
+        public GetResultsResponse GetResults()
         {
-            return ResultsHandler.GetResults();
+            var results = ResultsHandler.GetResults();
+            return new GetResultsResponse {Results = results};
         }
     }
 }

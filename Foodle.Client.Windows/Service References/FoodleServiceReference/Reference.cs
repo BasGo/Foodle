@@ -15,6 +15,51 @@ namespace Foodle.Client.Windows.FoodleServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GetVoteOptionsResponse", Namespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Contracts")]
+    [System.SerializableAttribute()]
+    public partial class GetVoteOptionsResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Foodle.Client.Windows.FoodleServiceReference.Options OptionsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Foodle.Client.Windows.FoodleServiceReference.Options Options {
+            get {
+                return this.OptionsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OptionsField, value) != true)) {
+                    this.OptionsField = value;
+                    this.RaisePropertyChanged("Options");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Options", Namespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Contracts")]
     [System.SerializableAttribute()]
     public partial class Options : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -350,6 +395,51 @@ namespace Foodle.Client.Windows.FoodleServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GetResultsResponse", Namespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Contracts")]
+    [System.SerializableAttribute()]
+    public partial class GetResultsResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Foodle.Client.Windows.FoodleServiceReference.Results ResultsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Foodle.Client.Windows.FoodleServiceReference.Results Results {
+            get {
+                return this.ResultsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResultsField, value) != true)) {
+                    this.ResultsField = value;
+                    this.RaisePropertyChanged("Results");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Results", Namespace="http://schemas.datacontract.org/2004/07/Foodle.Service.Model")]
     [System.SerializableAttribute()]
     public partial class Results : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -568,13 +658,13 @@ namespace Foodle.Client.Windows.FoodleServiceReference {
     public interface IFoodleService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoodleService/GetVoteOptions", ReplyAction="http://tempuri.org/IFoodleService/GetVoteOptionsResponse")]
-        Foodle.Client.Windows.FoodleServiceReference.Options GetVoteOptions();
+        Foodle.Client.Windows.FoodleServiceReference.GetVoteOptionsResponse GetVoteOptions();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoodleService/SubmitVote", ReplyAction="http://tempuri.org/IFoodleService/SubmitVoteResponse")]
         Foodle.Client.Windows.FoodleServiceReference.SaveVoteResponse SubmitVote(Foodle.Client.Windows.FoodleServiceReference.SaveVoteRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoodleService/GetResults", ReplyAction="http://tempuri.org/IFoodleService/GetResultsResponse")]
-        Foodle.Client.Windows.FoodleServiceReference.Results GetResults();
+        Foodle.Client.Windows.FoodleServiceReference.GetResultsResponse GetResults();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -604,7 +694,7 @@ namespace Foodle.Client.Windows.FoodleServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public Foodle.Client.Windows.FoodleServiceReference.Options GetVoteOptions() {
+        public Foodle.Client.Windows.FoodleServiceReference.GetVoteOptionsResponse GetVoteOptions() {
             return base.Channel.GetVoteOptions();
         }
         
@@ -612,7 +702,7 @@ namespace Foodle.Client.Windows.FoodleServiceReference {
             return base.Channel.SubmitVote(request);
         }
         
-        public Foodle.Client.Windows.FoodleServiceReference.Results GetResults() {
+        public Foodle.Client.Windows.FoodleServiceReference.GetResultsResponse GetResults() {
             return base.Channel.GetResults();
         }
     }

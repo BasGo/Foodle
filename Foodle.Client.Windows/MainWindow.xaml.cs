@@ -13,26 +13,26 @@ namespace Foodle.Client.Windows
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Options voteOptions;
+        private Options _voteOptions;
 
         private IEnumerable<Restaurant> OptionsOne
         {
-            get { return voteOptions.Restaurants.Where(t => t.VotePoints == 0 || t.VotePoints == 3); }
+            get { return _voteOptions.Restaurants.Where(t => t.VotePoints == 0 || t.VotePoints == 3); }
         }
 
         private IEnumerable<Restaurant> OptionsTwo
         {
-            get { return voteOptions.Restaurants.Where(t => t.VotePoints == 0 || t.VotePoints == 2); }
+            get { return _voteOptions.Restaurants.Where(t => t.VotePoints == 0 || t.VotePoints == 2); }
         }
 
         private IEnumerable<Restaurant> OptionsThree
         {
-            get { return voteOptions.Restaurants.Where(t => t.VotePoints == 0 || t.VotePoints == 1); }
+            get { return _voteOptions.Restaurants.Where(t => t.VotePoints == 0 || t.VotePoints == 1); }
         }
 
         private IEnumerable<Restaurant> ValidVotes
         {
-            get { return voteOptions.Restaurants.Where(t => t.VotePoints > 0).OrderByDescending(t => t.VotePoints); }
+            get { return _voteOptions.Restaurants.Where(t => t.VotePoints > 0).OrderByDescending(t => t.VotePoints); }
         }
 
         public MainWindow()
@@ -42,9 +42,10 @@ namespace Foodle.Client.Windows
 
         private void GetRestaurantsButton_Click(object sender, RoutedEventArgs e)
         {
-            var client = new FoodleServiceClient();
-
-            voteOptions = client.GetVoteOptions();
+            using (var client = new FoodleServiceClient())
+            {
+                _voteOptions = client.GetVoteOptions();
+            }           
 
             ShowRestaurants();
   
@@ -126,7 +127,7 @@ namespace Foodle.Client.Windows
 
         private void SendVoteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (voteOptions == null)
+            if (_voteOptions == null)
                 MessageBox.Show("Please get options first");
             else if (ValidVotes.Count() != 3)
                 MessageBox.Show("Select three items");
@@ -151,12 +152,14 @@ namespace Foodle.Client.Windows
 
         private void GetResults(string statusInformation)
         {
-            var client = new FoodleServiceClient();
-            var tmp = client.GetResults();
             var msgBuilder = new StringBuilder();
-            msgBuilder.AppendLine(string.Format("[1] -> {0} ({1} votes)", tmp.Items[0].Prio1.Name, tmp.Items[0].Prio1.Points));
-            msgBuilder.AppendLine(string.Format("[2] -> {0} ({1} votes)", tmp.Items[0].Prio2.Name, tmp.Items[0].Prio2.Points));
-            msgBuilder.AppendLine(string.Format("[3] -> {0} ({1} votes)", tmp.Items[0].Prio3.Name, tmp.Items[0].Prio3.Points));
+            using (var client = new FoodleServiceClient())
+            {
+                var tmp = client.GetResults();
+                msgBuilder.AppendLine(string.Format("[1] -> {0} ({1} votes)", tmp.Items[0].Prio1.Name, tmp.Items[0].Prio1.Points));
+                msgBuilder.AppendLine(string.Format("[2] -> {0} ({1} votes)", tmp.Items[0].Prio2.Name, tmp.Items[0].Prio2.Points));
+                msgBuilder.AppendLine(string.Format("[3] -> {0} ({1} votes)", tmp.Items[0].Prio3.Name, tmp.Items[0].Prio3.Points));
+            }
 
             if (!string.IsNullOrEmpty(statusInformation))
             {
